@@ -20,21 +20,21 @@ Data Source: charity_data.csv
 
 #### Compiling, Training, and Evaluating the Model
 - This deep learning model is made of two hidden layers with 80 and 20 neurons respectively, both using the 'relu' activation function.
-- The following results were produce: loss: 0.7714 and accuracy: 0.6587, below the 75% goal.
-- The deciding factor in the optimization process was reinserting the NAME category as a feature.
+- The following results were produced: loss: 0.7714 and accuracy: 0.6587, below the 75% goal.
 
 ## Summary:
 
 #### Optimization:
-- Initially, providing some added adjustments to binning parameters provided minor results.
-  - When the NAME catagory was returned as a feature, this is ultimately what pushed the model over the 75% accuracy rating.
+- Providing some added adjustments to binning parameters provided minor results.
+  - Upon further review, the name category was misjudged, it had minor repetition within the data allowing binning parameters to be applied to it.
+    - When the NAME catagory was returned as a feature, this is ultimately what pushed the model over the 75% accuracy rating.
   
   ```
   # Look at NAME counts for binning
   name_counts = application_df['NAME'].value_counts()
   name_counts
   
-  # Choose a cut-off value and create a list of names_replace to be replaced.
+  # Choose a cut-off value and create a list of names_replace to be replaced. Based on value_counts, 5 will be an effective cit-off.
   names_replace = list(name_counts[name_counts<5].index)
   names_replace
 
